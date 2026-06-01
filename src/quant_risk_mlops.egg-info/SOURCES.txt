@@ -21,6 +21,7 @@ src/quant_risk_mlops.egg-info/SOURCES.txt
 src/quant_risk_mlops.egg-info/dependency_links.txt
 src/quant_risk_mlops.egg-info/requires.txt
 src/quant_risk_mlops.egg-info/top_level.txt
+tests/test_api.py
 tests/test_evaluate.py
 tests/test_schema.py
 tests/test_transforms.py

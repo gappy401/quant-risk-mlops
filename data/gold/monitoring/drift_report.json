@@ -1,0 +1,128 @@
+{
+  "n_reference": 40000,
+  "n_current": 20000,
+  "features": [
+    {
+      "feature": "loan_amnt",
+      "psi": 0.0481,
+      "ks_stat": 0.09240000000000004,
+      "ks_pvalue": 1.6311424330879543e-99,
+      "status": "OK"
+    },
+    {
+      "feature": "int_rate",
+      "psi": 0.5884,
+      "ks_stat": 0.31047499999999995,
+      "ks_pvalue": 0.0,
+      "status": "ALERT"
+    },
+    {
+      "feature": "installment",
+      "psi": 0.0925,
+      "ks_stat": 0.12477500000000008,
+      "ks_pvalue": 2.1779985920073828e-181,
+      "status": "OK"
+    },
+    {
+      "feature": "annual_inc",
+      "psi": 0.1298,
+      "ks_stat": 0.14722500000000005,
+      "ks_pvalue": 1.0490927613789313e-252,
+      "status": "WATCH"
+    },
+    {
+      "feature": "dti",
+      "psi": 0.5949,
+      "ks_stat": 0.31307499999999994,
+      "ks_pvalue": 0.0,
+      "status": "ALERT"
+    },
+    {
+      "feature": "delinq_2yrs",
+      "psi": 0.3611,
+      "ks_stat": 0.2894999999999999,
+      "ks_pvalue": 0.0,
+      "status": "ALERT"
+    },
+    {
+      "feature": "open_acc",
+      "psi": 0.0011,
+      "ks_stat": 0.004500000000000004,
+      "ks_pvalue": 0.9488707089436033,
+      "status": "OK"
+    },
+    {
+      "feature": "revol_util",
+      "psi": 0.6264,
+      "ks_stat": 0.31725000000000003,
+      "ks_pvalue": 0.0,
+      "status": "ALERT"
+    },
+    {
+      "feature": "fico",
+      "psi": 0.2495,
+      "ks_stat": 0.204025,
+      "ks_pvalue": 0.0,
+      "status": "WATCH"
+    },
+    {
+      "feature": "installment_to_income",
+      "psi": 0.2156,
+      "ks_stat": 0.19250000000000006,
+      "ks_pvalue": 0.0,
+      "status": "WATCH"
+    },
+    {
+      "feature": "loan_to_income",
+      "psi": 0.164,
+      "ks_stat": 0.16795000000000004,
+      "ks_pvalue": 0.0,
+      "status": "WATCH"
+    },
+    {
+      "feature": "emp_length_years",
+      "psi": 0.0002,
+      "ks_stat": 0.002175000000000038,
+      "ks_pvalue": 0.9999999604192342,
+      "status": "OK"
+    },
+    {
+      "feature": "term",
+      "psi": 0.0,
+      "ks_stat": null,
+      "ks_pvalue": null,
+      "status": "OK"
+    },
+    {
+      "feature": "grade",
+      "psi": 0.0007,
+      "ks_stat": null,
+      "ks_pvalue": null,
+      "status": "OK"
+    },
+    {
+      "feature": "home_ownership",
+      "psi": 0.0002,
+      "ks_stat": null,
+      "ks_pvalue": null,
+      "status": "OK"
+    },
+    {
+      "feature": "purpose",
+      "psi": 0.0007,
+      "ks_stat": null,
+      "ks_pvalue": null,
+      "status": "OK"
+    }
+  ],
+  "prediction_psi": null,
+  "target_rate_reference": 0.1474,
+  "target_rate_current": 0.1662,
+  "drift_detected": true,
+  "alerting_features": [
+    "int_rate",
+    "dti",
+    "delinq_2yrs",
+    "revol_util"
+  ]
+}
