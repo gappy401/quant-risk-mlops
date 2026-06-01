@@ -13,9 +13,14 @@ src/quant_risk/models/evaluate.py
 src/quant_risk/models/train.py
 src/quant_risk/monitoring/__init__.py
 src/quant_risk/serving/__init__.py
+src/quant_risk/serving/api.py
+src/quant_risk/serving/schema.py
 src/quant_risk/streaming/__init__.py
 src/quant_risk_mlops.egg-info/PKG-INFO
 src/quant_risk_mlops.egg-info/SOURCES.txt
 src/quant_risk_mlops.egg-info/dependency_links.txt
 src/quant_risk_mlops.egg-info/requires.txt
 src/quant_risk_mlops.egg-info/top_level.txt
+tests/test_evaluate.py
+tests/test_schema.py
+tests/test_transforms.py
