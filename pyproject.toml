@@ -16,6 +16,7 @@ dependencies = [
     "pandera[pandas]>=0.18",
     "pyyaml>=6.0",
     "pydantic>=2.6",
+    "mlflow>=2.12",
 ]
 
 [project.optional-dependencies]
