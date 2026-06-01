@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: quant-risk-mlops
+Version: 0.1.0
+Summary: Open-source, portable MLOps platform for consumer-credit PD scoring
+Requires-Python: >=3.10
+Requires-Dist: numpy>=1.26
+Requires-Dist: pandas>=2.1
+Requires-Dist: pyarrow>=14
+Requires-Dist: scipy>=1.11
+Requires-Dist: scikit-learn>=1.4
+Requires-Dist: pandera[pandas]>=0.18
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: pydantic>=2.6
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: pytest-cov>=5.0; extra == "dev"
+Requires-Dist: ruff>=0.4; extra == "dev"

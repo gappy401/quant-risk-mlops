@@ -1,0 +1,9 @@
+seed: 42
+n_synthetic: 50000
+mlflow_tracking_uri: "sqlite:///mlflow.db"
+mlflow_experiment: "credit-pd"
+model_name: "credit_pd"
+model:
+  test_size: 0.2
+  max_iter: 1000
+  auc_gate: 0.60
