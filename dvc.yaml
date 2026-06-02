@@ -1,0 +1,31 @@
+# Reproducible pipeline. `dvc repro` runs only stages whose deps/params changed.
+stages:
+  generate:
+    cmd: python -m quant_risk.data.generate --n ${data.n_synthetic} --out data/raw/loans.parquet
+    params:
+      - data.n_synthetic
+    outs:
+      - data/raw/loans.parquet
+
+  train:
+    cmd: python -m quant_risk.models.train
+    deps:
+      - data/raw/loans.parquet
+      - conf/config.yaml
+      - src/quant_risk
+    outs:
+      - data/gold/reference.parquet
+    metrics:
+      - metrics.json:
+          cache: false
+
+  monitor:
+    cmd: python -m quant_risk.monitoring.run_monitor --drift ${monitor.drift}
+    deps:
+      - data/gold/reference.parquet
+      - src/quant_risk
+    params:
+      - monitor.drift
+    outs:
+      - data/gold/monitoring/drift_report.json:
+          cache: false

@@ -1,0 +1,13 @@
+schema: '2.0'
+stages:
+  generate:
+    cmd: python -m quant_risk.data.generate --n 50000 --out 
+      data/raw/loans.parquet
+    params:
+      params.yaml:
+        data.n_synthetic: 50000
+    outs:
+    - path: data/raw/loans.parquet
+      hash: md5
+      md5: e93c5e6be89b8c3abcdb9f9729fb8a21
+      size: 1878685

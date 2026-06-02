@@ -1,0 +1,4 @@
+data:
+  n_synthetic: 50000
+monitor:
+  drift: 0.0
