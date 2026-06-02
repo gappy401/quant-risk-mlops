@@ -1,0 +1,29 @@
+# Local stack: an MLflow tracking server + the scoring API that loads from it.
+services:
+  mlflow:
+    image: credit-pd-api
+    user: root
+    environment:
+      MLFLOW_SERVER_ALLOWED_HOSTS: "*"
+    command: >
+      mlflow server
+      --host 0.0.0.0 --port 5000
+      --backend-store-uri sqlite:////mlflow/mlflow.db
+      --artifacts-destination /mlflow/artifacts
+      --serve-artifacts
+    volumes:
+      - mlflow-data:/mlflow
+    ports:
+      - "5000:5000"
+
+  api:
+    image: credit-pd-api
+    depends_on:
+      - mlflow
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    ports:
+      - "8000:8000"
+
+volumes:
+  mlflow-data:
