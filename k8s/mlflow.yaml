@@ -1,0 +1,50 @@
+# MLflow tracking server as a Kubernetes Deployment + Service.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlflow
+  labels:
+    app: mlflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mlflow
+  template:
+    metadata:
+      labels:
+        app: mlflow
+    spec:
+      containers:
+        - name: mlflow
+          image: credit-pd-api
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsUser: 0          # write to the volume (same reason as user: root in compose)
+          command: ["mlflow", "server",
+                    "--host", "0.0.0.0", "--port", "5000",
+                    "--backend-store-uri", "sqlite:////mlflow/mlflow.db",
+                    "--artifacts-destination", "/mlflow/artifacts",
+                    "--serve-artifacts"]
+          env:
+            - name: MLFLOW_SERVER_ALLOWED_HOSTS
+              value: "*"
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: mlflow-data
+              mountPath: /mlflow
+      volumes:
+        - name: mlflow-data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlflow
+spec:
+  selector:
+    app: mlflow
+  ports:
+    - port: 5000
+      targetPort: 5000

@@ -1,0 +1,24 @@
+# Throwaway load generator: 4 parallel pods hammer /score for ~2 minutes.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: loadgen
+spec:
+  parallelism: 4
+  completions: 4
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: loadgen
+          image: curlimages/curl
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              end=$(( $(date +%s) + 120 ))
+              while [ $(date +%s) -lt $end ]; do
+                curl -s -o /dev/null -X POST http://credit-pd-api:8000/score \
+                  -H 'Content-Type: application/json' \
+                  -d '{"loan_amnt":12000,"term":"36 months","int_rate":13.5,"installment":407,"grade":"C","emp_length":"5 years","home_ownership":"RENT","annual_inc":65000,"purpose":"debt_consolidation","dti":18.2,"delinq_2yrs":0,"open_acc":9,"revol_util":42,"fico_range_low":690,"fico_range_high":694}'
+              done
